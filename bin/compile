@@ -26,7 +26,9 @@ if [ -d "$ENV_DIR" ]; then
 fi
 
 WORK_DIR=/app
-cp -Rp "$BUILD_DIR/*" "$WORK_DIR"
+mkdir -p /tmp && mv $BUILD_DIR/.git /tmp/build_git
+cp -Rp "$BUILD_DIR/." "$WORK_DIR"
+mv /tmp/build_git $BUILD_DIR/.git
 mkdir -p "$WORK_DIR/vendor/bin"
 mkdir -p "$WORK_DIR/vendor/ghc-libs"
 
